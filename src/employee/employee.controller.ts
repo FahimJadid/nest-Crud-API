@@ -8,11 +8,15 @@ import {
   Put,
 } from '@nestjs/common';
 import { EmployeeService } from './employee.service';
-import { CreateEmployeeDto } from './dto/create-employee.dto';
-import { UpdateEmployeeDto } from './dto/update-employee.dto';
+import { CreateEmployeeDto } from '../dto/create-employee.dto';
+import { UpdateEmployeeDto } from '../dto/update-employee.dto';
 
 @Controller('employee')
-export class EmloyeeController {
+export class EmployeeController {
+
+
+
+
   constructor(private readonly employeeService: EmployeeService) {}
 
   @Post()
@@ -30,7 +34,7 @@ export class EmloyeeController {
     return this.employeeService.findOne(id);
   }
 
-  @Put()
+  @Put(":id")
   update(
     @Param('id') id: string,
     @Body() updateEmployeeDto: UpdateEmployeeDto,
